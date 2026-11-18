@@ -364,6 +364,7 @@ button{font:inherit;color:inherit}
 .paso-n{color:var(--cian);margin-bottom:.9rem}
 .paso h3{font-size:clamp(1.6rem,6vw,2.6rem);color:#fff;margin-bottom:.8rem;letter-spacing:-.03em}
 .paso p{color:var(--txo2);font-size:1.05rem;max-width:30rem}
+.paso p+p{margin-top:.8rem}
 .paso-cta{margin-top:1.2rem}
 
 /* ---------- 11. Bento ---------- */
@@ -502,6 +503,9 @@ button{font:inherit;color:inherit}
 .info-card address p{margin-bottom:1.1rem;color:#fff}
 .info-tel{font:800 1.6rem/1.2 var(--f-tit);text-decoration:none;letter-spacing:-.02em}
 .info-tel:hover{color:var(--cian)}
+.info-mail{font:700 1.15rem/1.3 var(--f-tit);text-decoration:none;overflow-wrap:anywhere}
+.info-mail:hover{color:var(--cian)}
+.pie-mail{overflow-wrap:anywhere}
 .info-btns{display:flex;flex-direction:column;gap:.7rem}
 
 /* ---------- 15. Pie ---------- */
