@@ -459,6 +459,17 @@ button{font:inherit;color:inherit}
 .marco-fin h3{font-size:clamp(1.6rem,6vw,2.2rem)}
 .bit-prog{display:none}
 
+/* ---------- Promesa (eslogan) ---------- */
+.promesa{padding-block:clamp(4.5rem,10vw,8rem);background:linear-gradient(120deg,#274F93,#2F66B0 55%,#2578B8);color:#fff;text-align:center;overflow:clip}
+.promesa .wrap{position:relative;z-index:1}
+.promesa .kicker{color:rgba(255,255,255,.88)}
+.promesa h2{color:#fff;font-size:clamp(2.1rem,8.4vw,6.2rem);line-height:1.04;letter-spacing:-.04em}
+.promesa h2 span{display:block}
+.promesa h2 em{font-style:normal;color:var(--ambar)}
+.promesa-lema{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;margin:clamp(1.8rem,4vw,3rem) 0 0;font:700 clamp(1.2rem,3.4vw,2.1rem)/1.25 var(--f-tit);letter-spacing:-.02em}
+.promesa-lema svg{flex:none;color:var(--cian);animation:gira 14s linear infinite}
+@media (min-width:768px){.promesa-lema{flex-direction:row}}
+
 /* ---------- 14. Contacto ---------- */
 .contacto{background:radial-gradient(70% 50% at 0% 100%,#12206b 0,transparent 60%),var(--noche);overflow:clip}
 .contacto .wrap{position:relative;z-index:1}
