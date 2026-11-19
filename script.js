@@ -458,6 +458,32 @@ const WHATSAPP_NUMBER = "527571054014";
     });
   }
 
+  /* ---------- Bento: carruseles de fotos ---------- */
+  function iniciarGalerias() {
+    $$('[data-gal]').forEach((gal, g) => {
+      const fotos = $$('img', gal);
+      if (fotos.length < 2) return;
+      let cur = 0, manual = false, visible = false;
+      const ir = n => {
+        cur = (n + fotos.length) % fotos.length;
+        fotos.forEach((f, i) => { f.classList.toggle('is-on', i === cur); f.setAttribute('aria-hidden', i === cur ? 'false' : 'true'); });
+      };
+      const ctl = document.createElement('div');
+      ctl.className = 'gal-ctl';
+      [['‹', 'Foto anterior', -1], ['›', 'Foto siguiente', 1]].forEach(([t, lab, d]) => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.textContent = t; b.setAttribute('aria-label', lab);
+        b.addEventListener('click', () => { manual = true; ir(cur + d); });
+        ctl.appendChild(b);
+      });
+      gal.appendChild(ctl);
+      if (!RM && 'IntersectionObserver' in window) {
+        new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(gal);
+        setInterval(() => { if (!manual && visible && !document.hidden) ir(cur + 1); }, 4200 + g * 700);
+      }
+    });
+  }
+
   /* ---------- Por dentro: radiografía ---------- */
   function iniciarRadio() {
     const lista = $$('#radioLista li');
@@ -497,7 +523,8 @@ const WHATSAPP_NUMBER = "527571054014";
     bit.classList.toggle('bit-js', on);
     if (on) {
       railW = bitPista.scrollWidth;
-      bit.style.height = `${Math.round(railW - innerWidth + innerHeight)}px`;
+      /* el carril avanza 1.8× más rápido que el scroll para que 20 fotos no alarguen la página en exceso */
+      bit.style.height = `${Math.round((railW - innerWidth) / 1.8 + innerHeight)}px`;
     } else {
       bit.style.height = '';
       bitPista.style.transform = '';
@@ -615,6 +642,7 @@ const WHATSAPP_NUMBER = "527571054014";
     iniciarTicker();
     iniciarAcordeon();
     iniciarBento();
+    iniciarGalerias();
     iniciarRadio();
     iniciarContacto();
     iniciarPie();
